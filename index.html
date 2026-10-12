@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weather Sphere — AI Weather</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="sky sky-day" id="sky">
+  <div class="sun" id="sun"></div><div class="stars" id="stars"></div>
+  <div class="cloud cloud-one"></div><div class="cloud cloud-two"></div><div class="cloud cloud-three"></div>
+  <div class="horizon"></div>
+</div>
+<header class="topbar">
+  <a class="brand" href="/"><span class="brand-icon">✦</span> weather<span>sphere</span></a>
+  <div class="top-meta"><span class="live-dot"></span><span id="clock">LIVE CONDITIONS</span><button class="glass-btn" id="locateBtn" title="Use my location">⌖ <span>My location</span></button></div>
+</header>
+<main class="layout">
+  <section class="main-column">
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span><input id="searchInput" placeholder="Search a city, place or coordinates…" autocomplete="off">
+      <button id="searchBtn">Explore <span>↗</span></button>
+    </div>
+    <div class="suggestion">Try <button class="suggest" data-query="Tokyo">Tokyo</button><button class="suggest" data-query="Reykjavik">Reykjavík</button><button class="suggest" data-query="New York">New York</button><button class="suggest" data-query="31.7683, 35.2137">31.7683, 35.2137</button></div>
+    <div class="weather-card" id="weatherCard">
+      <div class="card-shade"></div><div class="card-top"><div><div class="eyebrow" id="conditionLabel">YOUR SKY, RIGHT NOW</div><div class="place" id="place">Find your atmosphere</div><div class="date" id="dateLine">Search anywhere on Earth</div></div><div class="sunrise-chip" id="phaseChip">✦ LIVE SKY</div></div>
+      <div class="hero-weather">
+        <div class="temperature-wrap"><div class="temperature" id="temperature">--<span>°</span></div><div class="condition" id="condition">The world is waiting</div><div class="feels" id="feels">Search a place to reveal its weather</div></div>
+        <div class="weather-icon" id="weatherIcon">☀</div>
+      </div>
+      <div class="weather-stats">
+        <div class="stat"><span class="stat-icon">♧</span><div><small>FEELS LIKE</small><strong id="statFeels">—</strong></div></div>
+        <div class="stat"><span class="stat-icon">◉</span><div><small>HUMIDITY</small><strong id="statHumidity">—</strong></div></div>
+        <div class="stat"><span class="stat-icon">➤</span><div><small>WIND</small><strong id="statWind">—</strong></div></div>
+        <div class="stat"><span class="stat-icon">☷</span><div><small>CLOUD COVER</small><strong id="statClouds">—</strong></div></div>
+      </div>
+      <div class="card-bottom"><span id="coordinates">LAT — · LON —</span><button id="sceneBtn">✧ Generate local scene</button></div>
+      <div class="generated-scene" id="generatedScene"></div>
+    </div>
+    <div class="forecast-panel">
+      <div class="section-heading"><div><span class="eyebrow">THE NEXT HOURS</span><h2>Forecast</h2></div><span class="subtle">Local time</span></div>
+      <div class="hourly" id="hourly"><div class="empty-forecast">Search a location to see the forecast.</div></div>
+    </div>
+  </section>
+  <aside class="side-column">
+    <div class="assistant-panel">
+      <div class="section-heading"><div><span class="eyebrow">YOUR WEATHER GUIDE</span><h2>Sphere AI</h2></div><span class="ai-badge">AI</span></div>
+      <button class="orb-button" id="orbButton" aria-label="Talk to Weather Sphere"><span class="orb-glow"></span><span class="orb"><span class="orb-core"></span><span class="orb-ring ring-a"></span><span class="orb-ring ring-b"></span><span class="orb-ring ring-c"></span><span class="orb-sheen"></span></span><span class="orb-spark spark-a">✦</span><span class="orb-spark spark-b">·</span></button>
+      <div class="orb-status" id="orbStatus">Tap the sphere to speak</div>
+      <p class="assistant-copy">Ask about any place on Earth. Try “What's the weather in Kyoto?” or “Will it rain in Paris tomorrow?”</p>
+      <div class="voice-transcript" id="transcript">Your conversation will appear here.</div>
+      <button class="talk-btn" id="talkBtn"><span>◉</span> Talk to Sphere</button>
+      <div class="assistant-foot"><span class="live-dot"></span> GROQ VOICE INTELLIGENCE</div>
+    </div>
+    <div class="details-panel">
+      <div class="section-heading"><div><span class="eyebrow">ATMOSPHERIC DETAILS</span><h2>Conditions</h2></div><span class="weather-symbol">⌁</span></div>
+      <div class="detail-row"><span>Pressure</span><strong id="statPressure">—</strong></div>
+      <div class="detail-row"><span>Visibility</span><strong id="statVisibility">—</strong></div>
+      <div class="detail-row"><span>Sunrise</span><strong id="statSunrise">—</strong></div>
+      <div class="detail-row"><span>Sunset</span><strong id="statSunset">—</strong></div>
+    </div>
+    <div class="history-panel"><div class="section-heading"><div><span class="eyebrow">RECENTLY EXPLORED</span><h2>History</h2></div><button class="text-btn" id="refreshHistory">Refresh ↻</button></div><div id="historyList" class="history-list"><div class="history-empty">Your recent places will appear here.</div></div></div>
+  </aside>
+</main>
+<footer><span>WEATHER SPHERE</span><span>Look closer at the sky.</span><span>Powered by OpenWeather · Groq · Cloudflare</span></footer>
+<div class="toast" id="toast"></div>
+<script src="/static/app.js"></script>
+</body></html>
